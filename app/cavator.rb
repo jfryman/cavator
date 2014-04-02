@@ -10,9 +10,10 @@ require 'bundler/setup'
 
 module Cavator
   class App
-    def initialize(*hash)
-      if hash.length == 1 && hash.first.kind_of?(Hash)
-        hash.first.each { |k, v| ENV[k] = v }
+    def initialize(*args)
+      options = args.shift
+      if options.length == 1 && options.first.kind_of?(Hash)
+        options.first.each { |k, v| ENV[k] = v }
       end
     end
   end

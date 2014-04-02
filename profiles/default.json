@@ -1,0 +1,8 @@
+{
+  "builder": "virtualbox-ubuntu-12.04-3-amd64",
+  "provisioners": [ 
+      "vagrant-bootstrap.json",  
+      "puppet-2.7.json",
+      "virtualbox-guest-tools.json"
+   ]
+}
