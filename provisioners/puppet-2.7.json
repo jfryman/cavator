@@ -1,0 +1,7 @@
+{
+  "type": "shell",
+  "scripts":[
+    "{{env `CAVATOR_DIR`}}/files/scripts/puppet-2.7.sh"
+  ],
+  "execute_command": "echo '{{env `SSH_PASSWORD` }}' | {{.Vars}} sudo -E -S bash '{{.Path}}'"
+}

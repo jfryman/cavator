@@ -1,0 +1,4 @@
+{
+  "type": "vagrant",
+  "output": "{{env `VAGRANT_BOX_NAME`}}.box"
+}

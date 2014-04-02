@@ -1,0 +1,24 @@
+{
+  "type": "virtualbox-iso",
+  "headless": "true",
+  "guest_os_type": "Ubuntu_64",
+  "iso_url": "http://releases.ubuntu.com/12.04/ubuntu-12.04.3-server-amd64.iso",
+  "iso_checksum": "2cbe868812a871242cdcdd8f2fd6feb9",
+  "iso_checksum_type": "md5",
+  "ssh_username": "{{env `SSH_USERNAME`}}",
+  "ssh_password": "{{env `SSH_PASSWORD`}}",
+  "output_directory": "{{env `PACKER_CACHE_DIR`}}/images",
+  "http_directory": "{{env `CAVATOR_ROOT_DIR`}}/files/preseeds/",
+  "boot_command": [
+      "<esc><esc><enter><wait>",
+      "/install/vmlinuz noapic ",
+      "preseed/url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ubuntu-12.04.cfg ",
+      "debian-installer=en_US auto locale=en_US kbd-chooser/method=us ",
+      "hostname={{env `HOSTNAME`}} ",
+      "fb=false debconf/frontend=noninteractive ",
+      "keyboard-configuration/modelcode=SKIP keyboard-configuration/layout=USA ",
+      "keyboard-configuration/variant=USA console-setup/ask_detect=false ",
+      "initrd=/install/initrd.gz -- <enter>"
+  ],
+  "shutdown_command": "echo '{{env `SSH_PASSWORD`}}' | sudo -S shutdown -P now"
+}

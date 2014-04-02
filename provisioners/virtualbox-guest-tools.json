@@ -1,0 +1,7 @@
+{
+  "type": "shell",
+  "scripts":[
+    "{{env `DOCKER_DIR`}}/files/scripts/virtualbox-guest-tools.sh"
+  ],
+  "execute_command": "echo '{{env `SSH_PASSWORD` }}' | {{.Vars}} sudo -E -S bash '{{.Path}}'"
+}
